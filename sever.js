@@ -122,7 +122,7 @@ app.get('/ploys/:id_oo', (req, res) => {
 // route to create a new ploys
 app.post('/ploys', (req, res) => {
   const ploy = req.body;
-  db.run('INSERT INTO ploys (name, brith, lastname) VALUES (?, ?, ?)', ploy.name, ploy.brith, ploy.lastname, function(err) {
+  db.run('INSERT INTO ploys (name, brith, lastname) VALUES (?, ?, ?)', ploy.name, ploy.brith, ploy.lastname, function(err) { //เพิ่มเครื่องหมาย?ตามจำนวนAttribiut
 
     if (err) {
       res.status(500).send(err);
