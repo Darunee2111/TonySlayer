@@ -16,10 +16,20 @@ app.use(express.json());
 
 // create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books (
-  id INTEGER PRIMARY KEY,
+  id INTEGER PRIMARY KEY,  
   title TEXT,
   author TEXT
 )`);
+
+
+//-------------------------สร้างเทเบิลที่2 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY----------------------
+db.run(`CREATE TABLE IF NOT EXISTS ploys (
+  id_oo INTEGER PRIMARY KEY,
+  name TEXT,
+  brith TEXT,
+  lastname TEXT
+)`);
+
 
 // route to get all books
 app.get('/books', (req, res) => {
@@ -75,6 +85,70 @@ app.put('/books/:id', (req, res) => {
 // route to delete a book
 app.delete('/books/:id', (req, res) => {
   db.run('DELETE FROM books WHERE id = ?', req.params.id, function(err) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send({});
+    }
+  });
+});
+
+//----------------------------------------------------------- route to get all ploys-----------------------------------------
+app.get('/ploys', (req, res) => {
+  db.all('SELECT * FROM ploys', (err, rows) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+// route to get a ploy by id
+app.get('/ploys/:id_oo', (req, res) => {
+  db.get('SELECT * FROM ploys WHERE id_oo = ?', req.params.id_oo, (err, row) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      if (!row) {
+        res.status(404).send('ploys not found');
+      } else {
+        res.json(row);
+      }
+    }
+  });
+});
+
+// route to create a new ploys
+app.post('/ploys', (req, res) => {
+  const ploy = req.body;
+  db.run('INSERT INTO ploys (name, brith, lastname) VALUES (?, ?, ?)', ploy.name, ploy.brith, ploy.lastname, function(err) {
+
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      ploy.id_oo = this.lastID;
+      res.send(ploy);
+    }
+  });
+});
+
+// route to update a ploy
+app.put('/ploys/:id_oo', (req, res) => {
+  const ploy = req.body;
+  db.run('UPDATE ploys SET name = ?, brith = ?, lastname = ? WHERE id_oo = ?', ploy.name, ploy.brith, ploy.lastname, req.params.id_oo, function(err) {
+
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send(book);
+    }
+  });
+});
+
+// route to delete a ploy
+app.delete('/ploys/:id_oo', (req, res) => {
+  db.run('DELETE FROM ploys WHERE id_oo = ?', req.params.id_oo, function(err) {
     if (err) {
       res.status(500).send(err);
     } else {

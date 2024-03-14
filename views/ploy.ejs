@@ -1,0 +1,28 @@
+<!-- ploy.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ploy</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>View Book</h1>
+    <table class="book-table">
+      <tr>
+        <th>name</th>
+        <th>birth</th>
+        <th>lastname</th>
+      </tr>
+      <tr>
+        <td><%= ploys[i].name %></td>
+        <td><%= ploys[i].birth %></td>
+        <td><%= ploys[i].lastname %></td>
+      </tr>
+    </table>
+    <div class="link-center">
+      <a href="/update2/<%= ploy.id_oo %>">Edit</a>
+      <a href="/delete2/<%= ploy.id_oo %>">Delete</a>
+      <a href="/ploys">Back to List</a>
+    </div>
+  </body>
+</html>

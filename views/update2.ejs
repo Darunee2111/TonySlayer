@@ -1,0 +1,28 @@
+<!-- update2.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>update2 ploy</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>update2 ploy</h1>
+    <form method="post" action="/update2/<%= ploy.id_oo %>">
+      <label for="name">name:</label>
+      <input type="text" id="name" name="name" value="<%= ploy.name %>" />
+      <br />
+      <label for="birth">birth:</label>
+      <input type="text" id="birth" name="birth" value="<%= ploy.birth %>" />
+      <br />
+      <label for="lastname">lastname:</label>
+      <input type="text" id="lastname" name="lastname" value="<%= ploy.lastname %>" />
+      <br />
+      <input type="submit" value="update2" />
+    </form>
+    <div class="link-center">
+      <a href="/ploy/<%= ploy.id_oo %>">View</a>
+      <a href="/delete2/<%= ploy.id_oo %>">Delete</a>
+      <a href="/ploys">Back to List</a>
+    </div>
+  </body>
+</html>

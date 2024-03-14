@@ -1,0 +1,33 @@
+<!-- ploys.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ploys</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <h1>ploys</h1>
+  <table class="book-table">
+    <tr>
+      <th>name</th>
+      <th>birth</th>
+      <th>lastname</th>
+      <th>Actions</th>
+    </tr>
+    <% for(var i=0; i < ploys.length; i++) { %>
+    <tr>
+      <td><%= ploys[i].name %></td>
+      <td><%= ploys[i].birth %></td>
+      <td><%= ploys[i].lastname %></td>
+      <td>
+        <a href="/update2/<%= ploys[i].id_oo %>">Edit</a>
+        <a href="/delete2/<%= ploys[i].id_oo %>">Delete</a>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  <div class="link-center">
+    <a href="/create2">Create New ploy</a>
+  </div>
+</body>
+</html>
