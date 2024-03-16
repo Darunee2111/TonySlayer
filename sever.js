@@ -30,6 +30,13 @@ db.run(`CREATE TABLE IF NOT EXISTS ploys (
   lastname TEXT
 )`);
 
+//-------------------------สร้างเทเบิลที่3 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY----------------------
+db.run(`CREATE TABLE IF NOT EXISTS renjuns (
+  id_do INTEGER PRIMARY KEY,
+  name TEXT,
+  lastname TEXT
+)`);
+
 
 // route to get all books
 app.get('/books', (req, res) => {
@@ -149,6 +156,70 @@ app.put('/ploys/:id_oo', (req, res) => {
 // route to delete a ploy
 app.delete('/ploys/:id_oo', (req, res) => {
   db.run('DELETE FROM ploys WHERE id_oo = ?', req.params.id_oo, function(err) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send({});
+    }
+  });
+});
+
+//----------------------------------------------------------- route to get all renjuns-----------------------------------------
+app.get('/renjuns', (req, res) => {
+  db.all('SELECT * FROM renjuns', (err, rows) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+// route to get a ploy by id
+app.get('/renjuns/:id_do', (req, res) => {
+  db.get('SELECT * FROM renjuns WHERE id_do = ?', req.params.id_do, (err, row) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      if (!row) {
+        res.status(404).send('renjuns not found');
+      } else {
+        res.json(row);
+      }
+    }
+  });
+});
+
+// route to create a new renjuns
+app.post('/renjuns', (req, res) => {
+  const renjun = req.body;
+  db.run('INSERT INTO renjuns (name, lastname) VALUES (?, ?)', renjun.name, renjun.lastname, function(err) { //เพิ่มเครื่องหมาย?ตามจำนวนAttribiut
+
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      renjun.id_do = this.lastID;
+      res.send(renjun);
+    }
+  });
+});
+
+// route to update a renjun
+app.put('/renjuns/:id_do', (req, res) => {
+  const renjun = req.body;
+  db.run('UPDATE renjuns SET name = ?, lastname = ? WHERE id_do = ?', renjun.name, renjun.lastname, req.params.id_do, function(err) {
+
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send(book);
+    }
+  });
+});
+
+// route to delete a renjun
+app.delete('/renjuns/:id_do', (req, res) => {
+  db.run('DELETE FROM renjuns WHERE id_do = ?', req.params.id_do, function(err) {
     if (err) {
       res.status(500).send(err);
     } else {

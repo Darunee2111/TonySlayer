@@ -118,7 +118,7 @@ app.get("/create2", (req, res) => {
 app.post("/create2", async (req, res) => {
     try {
         const data = { name: req.body.name, brith: req.body.brith, lastname: req.body.lastname };
-        await axios.put(base_url + '/ploys/' + req.params.id_oo, data);
+        await axios.post(base_url + '/ploys', data);
         res.redirect("/ploys");
     } catch (err) {
         console.error(err);
@@ -140,7 +140,7 @@ app.get("/update2/:id_oo", async (req, res) => {
 app.post("/update2/:id_oo", async (req, res) => {
     try {
         const data = { name: req.body.name, brith: req.body.brith, lastname: req.body.lastname };
-        await axios.put(base_url + '/ploys/' + req.params.id_oo, data);
+        await axios.post(base_url + '/ploys', data);
         res.redirect("/ploys");
     } catch (err) {
         console.error(err);
