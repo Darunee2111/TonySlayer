@@ -117,7 +117,7 @@ app.get("/create2", (req, res) => {
 
 app.post("/create2", async (req, res) => {
     try {
-        const data = { name: req.body.name, birth: req.body.birth, lastname: req.body.lastname };
+        const data = { name: req.body.name, brith: req.body.brith, lastname: req.body.lastname };
         await axios.put(base_url + '/ploys/' + req.params.id_oo, data);
         res.redirect("/ploys");
     } catch (err) {
