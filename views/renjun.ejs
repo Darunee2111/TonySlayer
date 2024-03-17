@@ -1,0 +1,26 @@
+<!-- renjun.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>renjun</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>View renjuns</h1>
+    <table class="renjun-table">
+      <tr>
+        <th>name</th>
+        <th>lastname</th>
+      </tr>
+      <tr>
+        <td><%= renjun.name %></td>
+        <td><%= renjun.lastname %></td>
+      </tr>
+    </table>
+    <div class="link-center">
+      <a href="/update3/<%= renjun.id_do %>">Edit</a>
+      <a href="/delete3/<%= renjun.id_do %>">Delete</a>
+      <a href="/renjuns">Back to List</a>
+    </div>
+  </body>
+</html>

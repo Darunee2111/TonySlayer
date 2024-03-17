@@ -1,0 +1,32 @@
+<!-- renjuns.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>renjuns</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <h1>renjuns</h1>
+  <table class="renjun-table">
+    <tr>
+        <th>name</th>
+        <th>lastname</th>
+        <th>Actions</th>
+    </tr>
+    <% for(var i=0; i < renjuns.length; i++) { %>
+    <tr>
+      <td><%= renjuns[i].title %></td>
+      <td><%= renjuns[i].author %></td>
+      <td>
+        <a href="/renjun/<%= renjuns[i].id_do %>">View</a>
+        <a href="/update3/<%= renjuns[i].id_do %>">Edit</a>
+        <a href="/delete3/<%= renjuns[i].id_do %>">Delete</a>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  <div class="link-center">
+    <a href="/create3">Create New renjun</a>
+  </div>
+</body>
+</html>

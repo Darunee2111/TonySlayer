@@ -1,0 +1,25 @@
+<!-- update3.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>update2 renjuns</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>update2 renjuns</h1>
+    <form method="post" action="/update3/<%= renjun.id_do %>">
+      <label for="name">name:</label>
+      <input type="text" id="name" name="name" value="<%= renjun.name %>" />
+      <br />
+      <label for="lastname">lastname:</label>
+      <input type="text" id="lastname" name="lastname" value="<%= renjun.lastname %>" />
+      <br />
+      <input type="submit" value="update3" />
+    </form>
+    <div class="link-center">
+      <a href="/renjun/<%= renjun.id_do %>">View</a>
+      <a href="/delete3/<%= renjun.id_do %>">Delete</a>
+      <a href="/renjuns">Back to List</a>
+    </div>
+  </body>
+</html>

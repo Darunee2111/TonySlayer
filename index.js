@@ -160,67 +160,67 @@ app.get("/delete2/:id_oo", async (req, res) => {
 
 //-----------------------------renjuns-----------------------------------------------------------------------
    
-app.get("/ploys", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/ploys" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
+app.get("/renjuns", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/renjuns" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
     try {
-        const response = await axios.get(base_url + '/ploys');
-        res.render("ploys", { ploys: response.data });
+        const response = await axios.get(base_url + '/renjuns');
+        res.render("renjuns", { renjuns: response.data });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error Access RootWEB');
     }
 });
 
-app.get("/ploy/:id_oo", async (req, res) => {
+app.get("/renjun/:id_do", async (req, res) => {
     try {
-        const response = await axios.get(base_url + '/ploys/' + req.params.id_oo);
-        res.render("ploy", { ploy: response.data });
+        const response = await axios.get(base_url + '/renjun/' + req.params.id_do);
+        res.render("renjun", { renjun: response.data });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
     }
 });
 
-app.get("/create2", (req, res) => {
-    res.render("create2");
+app.get("/create3", (req, res) => {
+    res.render("create3");
 });
 
-app.post("/create2", async (req, res) => {
+app.post("/create3", async (req, res) => {
     try {
-        const data = { name: req.body.name, brith: req.body.brith, lastname: req.body.lastname };
-        await axios.post(base_url + '/ploys', data);
-        res.redirect("/ploys");
+        const data = { name: req.body.name, lastname: req.body.lastname };
+        await axios.post(base_url + '/renjuns', data);
+        res.redirect("/renjuns");
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
     }
 });
 
-app.get("/update2/:id_oo", async (req, res) => {
+app.get("/update3/:id_do", async (req, res) => {
     try {
         const response = await axios.get(
-        base_url + '/ploys/' + req.params.id_oo);
-        res.render("update2", { ploy: response.data });
+        base_url + '/renjuns/' + req.params.id_do);
+        res.render("update3", { renjun: response.data });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
     }
 });
             
-app.post("/update2/:id_oo", async (req, res) => {
+app.post("/update3/:id_do", async (req, res) => {
     try {
-        const data = { name: req.body.name, brith: req.body.brith, lastname: req.body.lastname };
-        await axios.post(base_url + '/ploys', data);
-        res.redirect("/ploys");
+        const data = { name: req.body.name, lastname: req.body.lastname };
+        await axios.post(base_url + '/renjuns', data);
+        res.redirect("/renjuns");
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
     }
 });
             
-app.get("/delete2/:id_oo", async (req, res) => {
+app.get("/delete3/:id_do", async (req, res) => {
     try {
-        await axios.delete(base_url + '/ploys/' + req.params.id_oo);
-            res.redirect("/ploys");
+        await axios.delete(base_url + '/renjuns/' + req.params.id_do);
+            res.redirect("/renjuns");
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
