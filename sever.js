@@ -10,18 +10,14 @@ const app = express();
 
 // connect to database
 const db = new sqlite3.Database('./Database/Books.sqlite');
-
 // parse incoming requests
 app.use(express.json());
-
 // create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books (
   id INTEGER PRIMARY KEY,  
   title TEXT,
   author TEXT
 )`);
-
-
 //-------------------------สร้างเทเบิลที่2 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY----------------------
 db.run(`CREATE TABLE IF NOT EXISTS ploys (
   id_oo INTEGER PRIMARY KEY,
@@ -36,7 +32,6 @@ db.run(`CREATE TABLE IF NOT EXISTS renjuns (
   name TEXT,
   lastname TEXT
 )`);
-
 
 // route to get all books
 app.get('/books', (req, res) => {
