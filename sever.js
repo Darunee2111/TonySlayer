@@ -18,7 +18,7 @@ db.run(`CREATE TABLE IF NOT EXISTS books (
   title TEXT,
   author TEXT
 )`);
-//-------------------------สร้างเทเบิลที่2 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY----------------------
+//----------------สร้างเทเบิลที่2 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY------
 db.run(`CREATE TABLE IF NOT EXISTS ploys (
   id_oo INTEGER PRIMARY KEY,
   name TEXT,
@@ -26,7 +26,7 @@ db.run(`CREATE TABLE IF NOT EXISTS ploys (
   lastname TEXT
 )`);
 
-//-------------------------สร้างเทเบิลที่3 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY----------------------
+//---------------สร้างเทเบิลที่3 ****ไม่ว่าจะสร้างกี่เทเบิลชื่อตรง id ห้ามซ้ำเพราะเป็น PRIMARY KEY-------
 db.run(`CREATE TABLE IF NOT EXISTS renjuns (
   id_do INTEGER PRIMARY KEY,
   name TEXT,
@@ -95,7 +95,7 @@ app.delete('/books/:id', (req, res) => {
   });
 });
 
-//----------------------------------------------------------- route to get all ploys-----------------------------------------
+//-------------------------------------------- route to get all ploys-----------------------------------------
 app.get('/ploys', (req, res) => {
   db.all('SELECT * FROM ploys', (err, rows) => {
     if (err) {
@@ -159,7 +159,7 @@ app.delete('/ploys/:id_oo', (req, res) => {
   });
 });
 
-//----------------------------------------------------------- route to get all renjuns-----------------------------------------
+//------------------------------------ route to get all renjuns-----------------------------------------
 app.get('/renjuns', (req, res) => {
   db.all('SELECT * FROM renjuns', (err, rows) => {
     if (err) {
@@ -211,6 +211,7 @@ app.put('/renjuns/:id_do', (req, res) => {
     }
   });
 });
+
 
 // route to delete a renjun
 app.delete('/renjuns/:id_do', (req, res) => {

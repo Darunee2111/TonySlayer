@@ -2,18 +2,13 @@
 // Description: Node.js HTML client
 // requires: npm install express ejs axios body-parser
 //ข้อควรระวัง!!! การที่คุณเห็น "/" แล้วไม่มีอะไรพิมต่อหลัง / มันผิด ต้องพิมพ์ชื่อเทเบิ้ลใส่หลัง / ทุกครั้ง เช่น "/books"
-
-
 const express = require('express');
 const axios = require('axios');
 const app = express();
 var bodyParser = require('body-parser');
 
 // Base URL for the API
-//const base_url = "https://api.example.com";
 const base_url = "http://localhost:3000";
-//const base_url = "http://node41091-noderest.proen.app.ruk-com.cloud";
-
 // Set the template engine
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -89,9 +84,8 @@ app.get("/delete/:id", async (req, res) => {
     }
 });
 
-//-----------------------------ploys-----------------------------------------------------------------------
-   
-app.get("/ploys", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/ploys" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
+//-----------------------------ploys---------------------------------------------------
+   app.get("/ploys", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/ploys" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
     try {
         const response = await axios.get(base_url + '/ploys');
         res.render("ploys", { ploys: response.data });
@@ -158,9 +152,16 @@ app.get("/delete2/:id_oo", async (req, res) => {
     }
 });
 
-//-----------------------------renjuns-----------------------------------------------------------------------
-   
-app.get("/renjuns", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/renjuns" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
+
+
+
+
+
+
+
+
+//-----------------------------renjuns------------------------------------------------------
+   app.get("/renjuns", async (req, res) => { //บรรทัดนี้สำคัญต่อตัวท่านมากเพราะว่าต้องใส่ "/renjuns" ้พราะก่อนหน้านี้มันจะให้เป็น "/" ซึ่งแล้วแต่เวรแต่กรรมที่อีโทนี่จะให้มา
     try {
         const response = await axios.get(base_url + '/renjuns');
         res.render("renjuns", { renjuns: response.data });
@@ -230,4 +231,3 @@ app.get("/delete3/:id_do", async (req, res) => {
 app.listen(5500, () => {
             console.log('Server started on port 5500');
             });
-            
