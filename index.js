@@ -209,7 +209,7 @@ app.get("/update3/:id_do", async (req, res) => {
 app.post("/update3/:id_do", async (req, res) => {
     try {
         const data = { name: req.body.name, lastname: req.body.lastname };
-        await axios.post(base_url + '/renjuns', data);
+        await axios.put(base_url + '/renjuns/' + req.params.id_do, data);
         res.redirect("/renjuns");
     } catch (err) {
         console.error(err);

@@ -148,7 +148,7 @@ app.put('/ploys/:id_oo', (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.send(book);
+      res.send(ploy);
     }
   });
 });
@@ -175,7 +175,7 @@ app.get('/renjuns', (req, res) => {
   });
 });
 
-// route to get a ploy by id
+// route to get a renjuns by id
 app.get('/renjuns/:id_do', (req, res) => {
   db.get('SELECT * FROM renjuns WHERE id_do = ?', req.params.id_do, (err, row) => {
     if (err) {
@@ -212,7 +212,7 @@ app.put('/renjuns/:id_do', (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.send(book);
+      res.send(renjun);
     }
   });
 });
